@@ -38,7 +38,11 @@ const Todo = () => {
     setTask(updatetask);
      console.log(task);
     
+  };
+  const handelClear=()=>{
+    setTask([]);
   }
+
 
   return (
     <section className="todo-container">
