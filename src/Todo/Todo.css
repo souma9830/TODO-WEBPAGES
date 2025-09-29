@@ -1,0 +1,203 @@
+/* ---------- Base Styles ---------- */
+:root {
+  --primary-color: #5dade2;
+  --secondary-color: #f1c40f;
+  --danger-color: #e74c3c;
+  --success-color: #2ecc71;
+  --dark-bg: #1e272e;
+  --light-bg: #f8f9fa;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --text-color: #ecf0f1;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --radius: 18px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 4rem;
+  color: var(--text-color);
+}
+
+/* ---------- Container ---------- */
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease-in-out;
+}
+
+.todo-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Header ---------- */
+.header {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Form ---------- */
+form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+form input {
+  flex: 1;
+  padding: 1rem 1.2rem;
+  border: none;
+  border-radius: var(--radius) 0 0 var(--radius);
+  font-size: 1.6rem;
+  background: #f2f3f4;
+  color: #2c3e50;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+}
+
+form input:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+form button {
+  padding: 1rem 2rem;
+  border: none;
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  box-shadow: var(--shadow);
+}
+
+form button:hover {
+  background: #3498db;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Task List ---------- */
+.myUnOrdList {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-list {
+  list-style: none;
+  width: 100%;
+  max-width: 600px;
+  padding: 0;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  background: var(--light-bg);
+  color: #2c3e50;
+  margin: 1rem 0;
+  padding: 1.4rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1.6rem;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.todo-item:hover {
+  transform: translateY(-3px);
+  background: #fdfefe;
+}
+
+/* ---------- Buttons in List ---------- */
+.check-btn,
+.delete-btn {
+  width: 3.4rem;
+  height: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  box-shadow: var(--shadow);
+}
+
+.check-btn {
+  background: var(--success-color);
+  color: #fff;
+}
+
+.check-btn:hover {
+  background: #27ae60;
+  transform: scale(1.1);
+}
+
+.delete-btn {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+/* ---------- Clear Button ---------- */
+.clear-btn {
+  margin-top: 2rem;
+  background: var(--danger-color);
+  color: #fff;
+  font-size: 1.4rem;
+  padding: 1rem 2.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: var(--shadow);
+}
+
+.clear-btn:hover {
+  background: #8d1407;
+  transform: translateY(-2px);
+}
+
+/* ---------- Completed Task ---------- */
+.checkList {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.notCheckList {
+  text-decoration: none;
+}
