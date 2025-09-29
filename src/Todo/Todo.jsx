@@ -33,6 +33,12 @@ const Todo = () => {
     setTask((prev) => [...prev, inputval]);
     setval("");
   };
+  const handelDelete=(value)=>{
+    const updatetask=task.filter((curTask)=> curTask!==value)
+    setTask(updatetask);
+     console.log(task);
+    
+  }
 
   return (
     <section className="todo-container">
@@ -64,10 +70,13 @@ const Todo = () => {
             <li key={idx} className="todo-item">
               <span>{curTask}</span>
               <button className="check-btn"><MdCheck /></button>
-              <button className="delete-btn"><MdDeleteForever /></button>
+              <button className="delete-btn" onClick={()=>handelDelete(curTask)}><MdDeleteForever /></button>
             </li>
           ))}
         </ul>
+      </section>
+      <section>
+        <button className="clear-btn" onClick={handelClear}> Clear All</button>
       </section>
     </section>
   );
