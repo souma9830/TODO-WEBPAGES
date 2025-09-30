@@ -17,13 +17,15 @@ const Todo = () => {
    
   };
   const handelDelete=(value)=>{
-    const updatetask=task.filter((curTask)=> curTask!==value)
+    const updatetask=task.filter((curTask)=> curTask.content!==value)
     setTask(updatetask);
-     console.log(task);
     
   };
   const handelClear=()=>{
     setTask([]);
+  }
+  const handelCheckTodo=()=>{
+
   }
 
   return (
@@ -42,6 +44,8 @@ const Todo = () => {
               key={index.id} 
               data={curTask.content} 
               onHandeldeleteTodo={handelDelete} 
+              checked={curTask.checked}
+              onHandelCheckTodo={handelCheckTodo}
             />
           );
         })}

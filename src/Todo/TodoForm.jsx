@@ -8,7 +8,7 @@ export const TodoForm=({onAddTodo})=>{
     const handelFormSubmit=(event)=>{
          event.preventDefault();
          onAddTodo(inputval);
-        setval("");
+        setval({id:"", content:"", checked:false});
     }
     return(
          <section className="form">
