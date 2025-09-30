@@ -1,32 +1,44 @@
-import { useState} from "react";
-import "./Todo.css"
+import { useState } from "react";
+import "./Todo.css";
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoDate } from "./TodoDate";
 
 const Todo = () => {
   const [task, setTask] = useState([]);
-  const handelFormSubmit = (inputval) => {
-    const {id, content, checked}=inputval;
-    if (!content) return;
-    const ifTodoMatch= task.find((curTask)=>{
-      curTask.content===content;
-    })
-    if(ifTodoMatch) return;
-    setTask((prev) => [...prev, {id,content,checked}]);
-   
-  };
-  const handelDelete=(value)=>{
-    const updatetask=task.filter((curTask)=> curTask.content!==value)
-    setTask(updatetask);
-    
-  };
-  const handelClear=()=>{
-    setTask([]);
-  }
-  const handelCheckTodo=()=>{
 
-  }
+  // Handle adding new todo
+  const handelFormSubmit = (inputval) => {
+    const { id, content, checked } = inputval;
+    if (!content) return;
+
+    const ifTodoMatch = task.find((curTask) => curTask.content === content);
+    if (ifTodoMatch) return;
+
+    setTask((prev) => [...prev, { id, content, checked }]);
+  };
+
+  // Handle deleting a todo
+  const handelDelete = (value) => {
+    const updatetask = task.filter((curTask) => curTask.content !== value);
+    setTask(updatetask);
+  };
+
+  const handelClear = () => {
+    setTask([]);
+  };
+
+  
+  const onHandelCheck = (content) => {
+    const updateTask = task.map((curTask) => {
+      if (curTask.content === content) {
+        return { ...curTask, checked: !curTask.checked };
+      } else {
+        return curTask;
+      }
+    });
+    setTask(updateTask);
+  };
 
   return (
     <section className="todo-container">
@@ -35,24 +47,26 @@ const Todo = () => {
         <TodoDate />
       </header>
 
-     <TodoForm  onAddTodo={handelFormSubmit}/>
-    <section className="myUnOrdList">
+      <TodoForm onAddTodo={handelFormSubmit} />
+
+      <section className="myUnOrdList">
         <ul>
-        {task.map((curTask, index) => {
-          return (
-            <TodoList 
-              key={index.id} 
-              data={curTask.content} 
-              onHandeldeleteTodo={handelDelete} 
+          {task.map((curTask) => (
+            <TodoList
+              key={curTask.id}
+              data={curTask.content}
+              onHandeldeleteTodo={handelDelete}
               checked={curTask.checked}
-              onHandelCheckTodo={handelCheckTodo}
+              onHandelCheck={onHandelCheck}
             />
-          );
-        })}
+          ))}
         </ul>
       </section>
+
       <section>
-        <button className="clear-btn" onClick={handelClear}> Clear All</button>
+        <button className="clear-btn" onClick={handelClear}>
+          Clear All
+        </button>
       </section>
     </section>
   );

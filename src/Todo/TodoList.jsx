@@ -1,6 +1,7 @@
 import { MdCheck, MdDeleteForever } from "react-icons/md";
 
 export const TodoList = ({ data, checked, onHandelCheck, onHandeldeleteTodo }) => {
+  
   return (
     <li className="todo-item">
       <span className={checked ? "checkList" : "notCheckList"}>{data}</span>
