@@ -3,6 +3,7 @@ import "./Todo.css"
 import { MdDeleteForever } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
 import { TodoForm } from "./TodoForm";
+import { TodoList } from "./TodoList";
 
 const Todo = () => {
   const [task, setTask] = useState([]);
@@ -44,15 +45,18 @@ const Todo = () => {
       </header>
 
      <TodoForm  onAddTodo={handelFormSubmit}/>
-      <section className="myUnOrdList">
+    <section className="myUnOrdList">
         <ul>
-          {task.map((curTask, idx) => (
-            <li key={idx} className="todo-item">
-              <span>{curTask}</span>
-              <button className="check-btn"><MdCheck /></button>
-              <button className="delete-btn" onClick={()=>handelDelete(curTask)}><MdDeleteForever /></button>
-            </li>
-          ))}
+        {task.map((curTask, index) => {
+  return (
+    <TodoList 
+      key={index} 
+      data={curTask} 
+      onHandeldeleteTodo={handelDelete} 
+    />
+  );
+})}
+
         </ul>
       </section>
       <section>
