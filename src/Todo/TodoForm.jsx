@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 export const TodoForm=({onAddTodo})=>{
-    const [inputval, setval] = useState("");
+    const [inputval, setval] = useState({});
     const handelInput = (val) => {
-    setval(val);
+    setval({id:val, content:val, checked:false});
     };
     const handelFormSubmit=(event)=>{
          event.preventDefault();
          onAddTodo(inputval);
-          setval("");
+        setval("");
     }
     return(
          <section className="form">
@@ -18,7 +18,7 @@ export const TodoForm=({onAddTodo})=>{
                       type="text"
                       className="todo-input"
                       autoComplete="off"
-                      value={inputval}
+                      value={inputval.content}
                       onChange={(event) => handelInput(event.target.value)}
                     />
                   </div>

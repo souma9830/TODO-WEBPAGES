@@ -1,9 +1,9 @@
 import { MdCheck, MdDeleteForever } from "react-icons/md";
 
-export const TodoList=({key,data,onHandeldeleteTodo})=>{
+export const TodoList=({data,onHandeldeleteTodo})=>{
 
     return(
-          <li key={key} className="todo-item">
+          <li className="todo-item">
             <span>{data}</span>
       <button className="check-btn">
         <MdCheck />

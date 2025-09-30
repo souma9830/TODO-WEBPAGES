@@ -1,7 +1,5 @@
 import { useState} from "react";
 import "./Todo.css"
-import { MdDeleteForever } from "react-icons/md";
-import { MdCheck } from "react-icons/md";
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoDate } from "./TodoDate";
@@ -9,10 +7,13 @@ import { TodoDate } from "./TodoDate";
 const Todo = () => {
   const [task, setTask] = useState([]);
   const handelFormSubmit = (inputval) => {
-   
-    if (!inputval) return;
-    if (task.includes(inputval))  return;
-    setTask((prev) => [...prev, inputval]);
+    const {id, content, checked}=inputval;
+    if (!content) return;
+    const ifTodoMatch= task.find((curTask)=>{
+      curTask.content===content;
+    })
+    if(ifTodoMatch) return;
+    setTask((prev) => [...prev, {id,content,checked}]);
    
   };
   const handelDelete=(value)=>{
@@ -25,7 +26,6 @@ const Todo = () => {
     setTask([]);
   }
 
-
   return (
     <section className="todo-container">
       <header>
@@ -37,15 +37,14 @@ const Todo = () => {
     <section className="myUnOrdList">
         <ul>
         {task.map((curTask, index) => {
-  return (
-    <TodoList 
-      key={index} 
-      data={curTask} 
-      onHandeldeleteTodo={handelDelete} 
-    />
-  );
-})}
-
+          return (
+            <TodoList 
+              key={index.id} 
+              data={curTask.content} 
+              onHandeldeleteTodo={handelDelete} 
+            />
+          );
+        })}
         </ul>
       </section>
       <section>
