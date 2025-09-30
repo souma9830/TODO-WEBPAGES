@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import "./Todo.css"
 import { MdDeleteForever } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
-import { Todoform } from "./TodoForm";
+import { TodoForm } from "./TodoForm";
 
 const Todo = () => {
-  
   const [task, setTask] = useState([]);
   const [date, setTime] = useState("");
 
@@ -19,13 +18,10 @@ const Todo = () => {
 
     return () => clearInterval(interval); 
   }, []);
-
- 
-
   const handelFormSubmit = (inputval) => {
-  
+   
     if (!inputval) return;
-    if (task.includes(inputval)) return;
+    if (task.includes(inputval))  return;
     setTask((prev) => [...prev, inputval]);
    
   };
@@ -47,8 +43,7 @@ const Todo = () => {
         <h2 className="date-time">{date}</h2>
       </header>
 
-      <Todoform onAddTodo={handelFormSubmit} />
-
+     <TodoForm  onAddTodo={handelFormSubmit}/>
       <section className="myUnOrdList">
         <ul>
           {task.map((curTask, idx) => (

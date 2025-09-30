@@ -1,16 +1,17 @@
 import { useState } from "react";
-export const Todoform=({onAddTodo})=>{
+
+export const TodoForm=({onAddTodo})=>{
     const [inputval, setval] = useState("");
     const handelInput = (val) => {
     setval(val);
-  };
-  const handelFormSubmit=(event)=>{
-    event.preventDefault();
-    onAddTodo(inputval);
-    setval("");
-  }
+    };
+    const handelFormSubmit=(event)=>{
+         event.preventDefault();
+         onAddTodo(inputval);
+          setval("");
+    }
     return(
-        <section className="form">
+         <section className="form">
                 <form onSubmit={handelFormSubmit}>
                   <div>
                     <input
@@ -26,5 +27,6 @@ export const Todoform=({onAddTodo})=>{
                   </div>
                 </form>
               </section>
+        
     )
 }
