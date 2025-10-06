@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 export const TodoDate=()=>{
-     const [date, setTime] = useState("");
-     useEffect(() => {
+    const [date, setTime] = useState("");
+    useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
       const formattedDate = now.toLocaleDateString();

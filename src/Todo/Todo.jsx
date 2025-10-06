@@ -16,6 +16,7 @@ const Todo = () => {
 
     setTask((prev) => [...prev, { id, content, checked }]);
   };
+  
   setlocalStorageData(task);
 
   const handelDelete = (value) => {
